@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("user")
@@ -15,9 +16,13 @@ public class UserController {
     private UserServiceImpl userService;
 
     @RequestMapping(value = "getUserById",params = {"userId"})
-    public User getUserById(int userId){
-        User user = userService.getUserById(userId);
-        return user;
+    public User getUserById(String userId){
+        return userService.getUserById(userId);
+    }
+
+    @RequestMapping(value = "getUserList")
+    public List<User> getUserList(){
+        return userService.getUserList();
     }
 
 }

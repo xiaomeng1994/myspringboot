@@ -3,81 +3,75 @@
 <mapper namespace="com.meng.mapper.UserMapper" >
 
     <resultMap id="BaseResultMap" type="com.meng.vo.User" >
-        <id column="userId" property="userId" jdbcType="INTEGER" />
+        <id column="userId" property="userId" jdbcType="VARCHAR" />
         <result column="age" property="age" jdbcType="INTEGER" />
         <result column="gender" property="gender" jdbcType="VARCHAR" />
         <result column="occupation" property="occupation" jdbcType="VARCHAR" />
     </resultMap>
 
-    <sql id="Base_Column_List" >
-        userId,age,gender,occupation
-    </sql>
-    <select id="getUserById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-        select
-        <include refid="Base_Column_List" />
-        from u_user
-        where userId = #{userId,jdbcType=INTEGER}
+    <!-- 查询用户集合 -->
+    <select id="getUserList" resultMap="BaseResultMap">
+        select userId,age,gender,occupation from u_user limit 1,10
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-        delete from u_user where userId = #{userId,jdbcType=INTEGER}
+
+    <!-- 根据id查询用户 -->
+    <select id="getUserById" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select userId,age,gender,occupation from u_user where userId = #{userId,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 根据id删除用户 -->
+    <delete id="deleteUserById" parameterType="java.lang.String" >
+        delete from u_user where userId = #{userId,jdbcType=VARCHAR}
     </delete>
-    <insert id="insert" parameterType="com.meng.vo.User" >
-        insert into u_user (id, user_name, password,age)
-        values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
-        #{age,jdbcType=INTEGER})
-    </insert>
-    <insert id="insertSelective" parameterType="com.meng.vo.User" >
+
+    <!-- 新增用户 -->
+    <insert id="insertUser" parameterType="com.meng.vo.User" >
         insert into u_user
         <trim prefix="(" suffix=")" suffixOverrides="," >
-            <if test="id != null" >
-                id,
-            </if>
-            <if test="userName != null" >
-                user_name,
-            </if>
-            <if test="password != null" >
-                password,
+            <if test="userId != null" >
+                userId,
             </if>
             <if test="age != null" >
                 age,
             </if>
+            <if test="gender != null" >
+                gender,
+            </if>
+            <if test="occupation != null" >
+                occupation,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
-            <if test="id != null" >
-                #{id,jdbcType=INTEGER},
-            </if>
-            <if test="userName != null" >
-                #{userName,jdbcType=VARCHAR},
-            </if>
-            <if test="password != null" >
-                #{password,jdbcType=VARCHAR},
+            <if test="userId != null" >
+                #{userId,jdbcType=VARCHAR},
             </if>
             <if test="age != null" >
                 #{age,jdbcType=INTEGER},
             </if>
+            <if test="gender != null" >
+                #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="occupation != null" >
+                #{occupation,jdbcType=VARCHAR},
+            </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.meng.vo.User" >
+
+    <!-- 根据id修改用户 -->
+    <update id="updateUserById" parameterType="com.meng.vo.User" >
         update u_user
         <set >
-            <if test="userName != null" >
-                user_name = #{userName,jdbcType=VARCHAR},
-            </if>
-            <if test="password != null" >
-                password = #{password,jdbcType=VARCHAR},
-            </if>
             <if test="age != null" >
                 age = #{age,jdbcType=INTEGER},
             </if>
+            <if test="gender != null" >
+                gender = #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="occupation != null" >
+                occupation = #{occupation,jdbcType=VARCHAR},
+            </if>
         </set>
-        where id = #{id,jdbcType=INTEGER}
-    </update>
-    <update id="updateByPrimaryKey" parameterType="com.meng.vo.User" >
-        update u_user
-        set user_name = #{userName,jdbcType=VARCHAR},
-        password = #{password,jdbcType=VARCHAR},
-        age = #{age,jdbcType=INTEGER}
-        where id = #{id,jdbcType=INTEGER}
+        where userId = #{userId,jdbcType=VARCHAR}
     </update>
 
 </mapper>

@@ -5,6 +5,7 @@ import com.meng.service.UserService;
 import com.meng.vo.User;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -14,8 +15,27 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User getUserById(int userId) {
-        User user = userMapper.getUserById(userId);
-        return user;
+    public User getUserById(String userId) {
+        return userMapper.getUserById(userId);
+    }
+
+    @Override
+    public List<User> getUserList() {
+        return userMapper.getUserList();
+    }
+
+    @Override
+    public void deleteUserById(String userId) {
+        userMapper.deleteUserById(userId);
+    }
+
+    @Override
+    public void insertUser(User user) {
+        userMapper.insertUser(user);
+    }
+
+    @Override
+    public void updateUserById(User user) {
+        userMapper.updateUserById(user);
     }
 }
