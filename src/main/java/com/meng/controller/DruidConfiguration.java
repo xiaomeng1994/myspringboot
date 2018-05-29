@@ -12,6 +12,9 @@ import org.springframework.context.annotation.Configuration;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ *  druid连接池提供SQL的UI页面
+ */
 @Configuration
 public class DruidConfiguration {
 

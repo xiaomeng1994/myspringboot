@@ -1,10 +1,10 @@
 package com.meng.service.impl;
 
-import com.github.pagehelper.PageHelper;
 import com.meng.mapper.UserMapper;
 import com.meng.service.UserService;
 import com.meng.vo.User;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 import java.util.List;
 
