@@ -11,7 +11,7 @@
 
     <!-- 查询用户集合 -->
     <select id="getUserList" resultMap="BaseResultMap">
-        select userId,age,gender,occupation from u_user limit 1,10
+        select userId,age,gender,occupation from u_user order by userId
     </select>
 
     <!-- 根据id查询用户 -->

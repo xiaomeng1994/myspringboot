@@ -1,5 +1,7 @@
 package com.meng.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.meng.service.impl.UserServiceImpl;
 import com.meng.vo.User;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,12 +19,15 @@ public class UserController {
 
     @RequestMapping(value = "getUserById",params = {"userId"})
     public User getUserById(String userId){
+        System.out.println(111);
         return userService.getUserById(userId);
     }
 
-    @RequestMapping(value = "getUserList")
-    public List<User> getUserList(){
-        return userService.getUserList();
+    @RequestMapping(value = "getUserList",params = {"currentPage","pageSize"})
+    public PageInfo<User>  getUserList(int currentPage,int pageSize){
+        PageHelper.startPage(currentPage,pageSize);
+        List<User> userList = userService.getUserList();
+        return new PageInfo<>(userList);
     }
 
 }
