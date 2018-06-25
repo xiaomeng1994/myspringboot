@@ -14,7 +14,7 @@ public interface FilePathService {
 
     void insertFilePathBydir(String filePath);
 
-    void clearFileContentByPath(String filePath);
+    void clearFileContentByPath(String filePath) throws Exception;
 
     /**
      * 获取字符串内的所有汉字的汉语拼音并大写每个字的首字母

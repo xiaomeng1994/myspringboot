@@ -8,4 +8,8 @@ public interface FilePathMapper {
 
     void insertFilePath(FilePathVO filePathVO);
 
+    /**
+     * 清空表
+     */
+    void truncate();
 }

@@ -13,7 +13,7 @@
         <result column="FILE_SIZE_" property="fileSize" jdbcType="BIGINT" />
     </resultMap>
 
-    <!-- 新增用户 -->
+    <!-- 新增数据 -->
     <insert id="insertFilePath" parameterType="com.meng.filepath.vo.FilePathVO" >
         insert into sys_dir_file
         <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -70,5 +70,9 @@
         </trim>
     </insert>
 
+    <!-- 清空表 -->
+    <delete id="truncate">
+        truncate table sys_dir_file
+    </delete>
 
 </mapper>
