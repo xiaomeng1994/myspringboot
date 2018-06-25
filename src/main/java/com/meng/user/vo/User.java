@@ -1,4 +1,4 @@
-package com.meng.vo;
+package com.meng.user.vo;
 
 public class User {
     private int userId;

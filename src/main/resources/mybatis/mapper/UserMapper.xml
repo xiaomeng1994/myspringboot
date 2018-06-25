@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.meng.mapper.UserMapper" >
+<mapper namespace="com.meng.user.mapper.UserMapper" >
 
-    <resultMap id="BaseResultMap" type="com.meng.vo.User" >
+    <resultMap id="BaseResultMap" type="com.meng.user.vo.User" >
         <id column="userId" property="userId" jdbcType="VARCHAR" />
         <result column="age" property="age" jdbcType="INTEGER" />
         <result column="gender" property="gender" jdbcType="VARCHAR" />
@@ -11,7 +11,7 @@
 
     <!-- 查询用户集合 -->
     <select id="getUserList" resultMap="BaseResultMap">
-        select userId,age,gender,occupation from u_user order by userId
+        select userId,age,gender,occupation from u_user order by age
     </select>
 
     <!-- 根据id查询用户 -->
@@ -25,7 +25,7 @@
     </delete>
 
     <!-- 新增用户 -->
-    <insert id="insertUser" parameterType="com.meng.vo.User" >
+    <insert id="insertUser" parameterType="com.meng.user.vo.User" >
         insert into u_user
         <trim prefix="(" suffix=")" suffixOverrides="," >
             <if test="userId != null" >
@@ -58,7 +58,7 @@
     </insert>
 
     <!-- 根据id修改用户 -->
-    <update id="updateUserById" parameterType="com.meng.vo.User" >
+    <update id="updateUserById" parameterType="com.meng.user.vo.User" >
         update u_user
         <set >
             <if test="age != null" >

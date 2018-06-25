@@ -1,18 +1,15 @@
-package com.meng.controller;
+package com.meng.user.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.meng.service.impl.UserServiceImpl;
-import com.meng.vo.User;
+import com.meng.user.service.impl.UserServiceImpl;
+import com.meng.user.vo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
 @Controller
@@ -32,7 +29,6 @@ public class HelloWorld {
     public String helloWorld2(Model model,int currentPage,int pageSize){
         PageHelper.startPage(currentPage,pageSize);
         PageInfo<User> userPageInfo = new PageInfo<>(userService.getUserList());
-
         model.addAttribute("userPageInfo",userPageInfo);
         return "/HelloWorld";
     }

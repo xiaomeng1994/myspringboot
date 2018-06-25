@@ -1,6 +1,6 @@
-package com.meng.service;
+package com.meng.user.service;
 
-import com.meng.vo.User;
+import com.meng.user.vo.User;
 
 import java.util.List;
 

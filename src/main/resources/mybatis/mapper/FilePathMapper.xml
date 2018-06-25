@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meng.filepath.mapper.FilePathMapper" >
+
+    <resultMap id="BaseResultMap" type="com.meng.user.vo.User" >
+        <id column="DIR_FILE_ID_" property="dirFileId" jdbcType="VARCHAR" />
+        <result column="DEP_ID_" property="depId" jdbcType="VARCHAR" />
+        <result column="FILE_NAME_" property="fileName" jdbcType="VARCHAR" />
+        <result column="PARENT_" property="parent" jdbcType="VARCHAR" />
+        <result column="DOC_DIR_TYPE_" property="docDirType" jdbcType="VARCHAR" />
+        <result column="DOC_EXT_" property="docExt" jdbcType="VARCHAR" />
+        <result column="REL_PATH_" property="relPath" jdbcType="VARCHAR" />
+        <result column="FILE_SIZE_" property="fileSize" jdbcType="BIGINT" />
+    </resultMap>
+
+    <!-- 新增用户 -->
+    <insert id="insertFilePath" parameterType="com.meng.filepath.vo.FilePathVO" >
+        insert into sys_dir_file
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="dirFileId != null" >
+                DIR_FILE_ID_,
+            </if>
+            <if test="depId != null" >
+                DEP_ID_,
+            </if>
+            <if test="fileName != null" >
+                FILE_NAME_,
+            </if>
+            <if test="parent != null" >
+                PARENT_,
+            </if>
+            <if test="docDirType != null" >
+                DOC_DIR_TYPE_,
+            </if>
+            <if test="docExt != null" >
+                DOC_EXT_,
+            </if>
+            <if test="relPath != null" >
+                REL_PATH_,
+            </if>
+            <if test="fileSize != null" >
+                FILE_SIZE_,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="dirFileId != null" >
+                #{dirFileId,jdbcType=VARCHAR},
+            </if>
+            <if test="depId != null" >
+                #{depId,jdbcType=VARCHAR},
+            </if>
+            <if test="fileName != null" >
+                #{fileName,jdbcType=VARCHAR},
+            </if>
+            <if test="parent != null" >
+                #{parent,jdbcType=VARCHAR},
+            </if>
+            <if test="docDirType != null" >
+                #{docDirType,jdbcType=VARCHAR},
+            </if>
+            <if test="docExt != null" >
+                #{docExt,jdbcType=VARCHAR},
+            </if>
+            <if test="relPath != null" >
+                #{relPath,jdbcType=VARCHAR},
+            </if>
+            <if test="fileSize != null" >
+                #{fileSize,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+
+
+</mapper>
