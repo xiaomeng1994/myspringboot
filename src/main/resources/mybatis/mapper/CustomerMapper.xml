@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.meng.moudle.customer.mapper.CustomerMapper">
+  <resultMap id="BaseResultMap" type="com.meng.moudle.customer.vo.Customer">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="investor" jdbcType="VARCHAR" property="investor" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="order" jdbcType="TIMESTAMP" property="order" />
+    <result column="order_years" jdbcType="INTEGER" property="orderYears" />
+    <result column="insurance_name" jdbcType="VARCHAR" property="insuranceName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, gender, investor, birthday, order, order_years, insurance_name
+  </sql>
+
+  <!-- 查询顾客集合 -->
+  <select id="getUserList" resultMap="BaseResultMap">
+    select  <include refid="Base_Column_List" /> from customer
+  </select>
+
+  <!-- 根据顾客id查询 -->
+  <select id="getCustomerById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <!-- 根据顾客id删除 -->
+  <delete id="deleteCustomerById" parameterType="java.lang.String">
+    delete from customer
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+
+  <!-- 插入顾客 -->
+  <insert id="insertCustomer" parameterType="com.meng.moudle.customer.vo.Customer">
+    insert into customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="investor != null">
+        investor,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="order != null">
+        order,
+      </if>
+      <if test="orderYears != null">
+        order_years,
+      </if>
+      <if test="insuranceName != null">
+        insurance_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="investor != null">
+        #{investor,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="order != null">
+        #{order,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderYears != null">
+        #{orderYears,jdbcType=INTEGER},
+      </if>
+      <if test="insuranceName != null">
+        #{insuranceName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateCustomerById" parameterType="com.meng.moudle.customer.vo.Customer">
+    update customer
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="investor != null">
+        investor = #{investor,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="order != null">
+        order = #{order,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderYears != null">
+        order_years = #{orderYears,jdbcType=INTEGER},
+      </if>
+      <if test="insuranceName != null">
+        insurance_name = #{insuranceName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+</mapper>
