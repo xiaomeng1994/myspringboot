@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <context id="MysqlTables" targetRuntime="MyBatis3" >
+
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://hd2:3306/myspringboot"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+
+        <!--实体类也不用提前，建立，会自动根据数据库生成，对应数据库中字段-->
+        <javaModelGenerator targetPackage="com.meng.demo" targetProject="src/main/java"/>
+
+        <!--映射的mapper.xml文件-->
+        <sqlMapGenerator targetPackage="mybatis.mapper.demo" targetProject="src/main/resources"/>
+
+        <!--映射文件，目标不必提前生成，会自动生成-->
+        <javaClientGenerator targetPackage="com.meng.demo"
+                             targetProject="src/main/java" type="XMLMAPPER"/>
+
+        <!--输入表名，表名不用对应实体，会自动判断-->
+        <!--<table tableName="dm_user" domainObjectName="User"-->
+        <!--enableCountByExample="false"-->
+        <!--enableUpdateByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+
+        <!--</table>-->
+        <!--<table tableName="DM_RESOURCE_INFO" domainObjectName="ResourceInfo"-->
+        <!--enableCountByExample="false"-->
+        <!--enableUpdateByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+
+        <!--</table>-->
+        <table tableName="user" domainObjectName="User"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <!--<table tableName="DM_TABLE_INFO" domainObjectName="TableInfo"-->
+        <!--enableCountByExample="false"-->
+        <!--enableUpdateByExample="false"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false"-->
+        <!--selectByExampleQueryId="false">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+
+        <!--</table>-->
+
+    </context>
+
+</generatorConfiguration>
