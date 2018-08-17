@@ -3,7 +3,9 @@
 <mapper namespace="com.meng.user.mapper.UserMapper" >
 
     <resultMap id="BaseResultMap" type="com.meng.user.vo.User" >
-        <id column="userId" property="userId" jdbcType="VARCHAR" />
+        <id column="user_id" property="userId" jdbcType="VARCHAR" />
+        <id column="user_name" property="userName" jdbcType="VARCHAR" />
+        <id column="name" property="name" jdbcType="VARCHAR" />
         <result column="age" property="age" jdbcType="INTEGER" />
         <result column="gender" property="gender" jdbcType="VARCHAR" />
         <result column="occupation" property="occupation" jdbcType="VARCHAR" />
@@ -11,25 +13,31 @@
 
     <!-- 查询用户集合 -->
     <select id="getUserList" resultMap="BaseResultMap">
-        select userId,age,gender,occupation from u_user order by age
+        select user_id,user_name,name,age,gender,occupation,phone from m_user order by age
     </select>
 
     <!-- 根据id查询用户 -->
     <select id="getUserById" resultMap="BaseResultMap" parameterType="java.lang.String" >
-        select userId,age,gender,occupation from u_user where userId = #{userId,jdbcType=VARCHAR}
+        select user_id,user_name,name,age,gender,occupation,phone from m_user where user_id = #{userId,jdbcType=VARCHAR}
     </select>
 
     <!-- 根据id删除用户 -->
     <delete id="deleteUserById" parameterType="java.lang.String" >
-        delete from u_user where userId = #{userId,jdbcType=VARCHAR}
+        delete from m_user where user_id = #{userId,jdbcType=VARCHAR}
     </delete>
 
     <!-- 新增用户 -->
     <insert id="insertUser" parameterType="com.meng.user.vo.User" >
-        insert into u_user
+        insert into m_user
         <trim prefix="(" suffix=")" suffixOverrides="," >
             <if test="userId != null" >
-                userId,
+                user_id,
+            </if>
+            <if test="userName != null" >
+                user_name,
+            </if>
+            <if test="name != null" >
+                name,
             </if>
             <if test="age != null" >
                 age,
@@ -40,10 +48,19 @@
             <if test="occupation != null" >
                 occupation,
             </if>
+            <if test="phone != null" >
+                phone,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
             <if test="userId != null" >
                 #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null" >
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
             </if>
             <if test="age != null" >
                 #{age,jdbcType=INTEGER},
@@ -54,13 +71,23 @@
             <if test="occupation != null" >
                 #{occupation,jdbcType=VARCHAR},
             </if>
+            <if test="phone != null" >
+                #{phone,jdbcType=VARCHAR},
+            </if>
         </trim>
     </insert>
 
     <!-- 根据id修改用户 -->
     <update id="updateUserById" parameterType="com.meng.user.vo.User" >
-        update u_user
+        update m_user
         <set >
+            <!-- 用户名不允许修改 -->
+            <!--<if test="userName != null" >
+                user_name = #{userName,jdbcType=VARCHAR},
+            </if>-->
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
             <if test="age != null" >
                 age = #{age,jdbcType=INTEGER},
             </if>
@@ -70,8 +97,11 @@
             <if test="occupation != null" >
                 occupation = #{occupation,jdbcType=VARCHAR},
             </if>
+            <if test="phone != null" >
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
         </set>
-        where userId = #{userId,jdbcType=VARCHAR}
+        where user_id = #{userId,jdbcType=VARCHAR}
     </update>
 
 </mapper>
