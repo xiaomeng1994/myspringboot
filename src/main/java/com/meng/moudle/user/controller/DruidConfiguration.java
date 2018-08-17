@@ -1,4 +1,4 @@
-package com.meng.user.controller;
+package com.meng.moudle.user.controller;
 
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;

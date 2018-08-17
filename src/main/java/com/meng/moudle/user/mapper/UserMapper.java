@@ -1,6 +1,6 @@
-package com.meng.user.mapper;
+package com.meng.moudle.user.mapper;
 
-import com.meng.user.vo.User;
+import com.meng.moudle.user.vo.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

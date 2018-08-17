@@ -1,6 +1,6 @@
-package com.meng.user.service;
+package com.meng.moudle.user.service;
 
-import com.meng.user.vo.User;
+import com.meng.moudle.user.vo.User;
 
 import java.util.List;
 

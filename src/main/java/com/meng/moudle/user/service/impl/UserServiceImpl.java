@@ -1,8 +1,8 @@
-package com.meng.user.service.impl;
+package com.meng.moudle.user.service.impl;
 
-import com.meng.user.mapper.UserMapper;
-import com.meng.user.service.UserService;
-import com.meng.user.vo.User;
+import com.meng.moudle.user.mapper.UserMapper;
+import com.meng.moudle.user.service.UserService;
+import com.meng.moudle.user.vo.User;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
