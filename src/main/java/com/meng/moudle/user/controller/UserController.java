@@ -3,7 +3,7 @@ package com.meng.moudle.user.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.meng.commnon.ReturnMessage;
-import com.meng.moudle.user.service.impl.UserServiceImpl;
+import com.meng.moudle.user.service.UserService;
 import com.meng.moudle.user.vo.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -19,7 +19,7 @@ import java.util.List;
 public class UserController {
 
     @Resource(name = "userService")
-    private UserServiceImpl userService;
+    private UserService userService;
 
     @ApiOperation(value = "获取用户列表信息")
     @RequestMapping(method = RequestMethod.POST,value = "getUserList")

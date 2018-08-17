@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.meng.filepath.mapper.FilePathMapper" >
 
-    <resultMap id="BaseResultMap" type="com.meng.user.vo.User" >
+    <resultMap id="BaseResultMap" type="com.meng.moudle.user.vo.User" >
         <id column="DIR_FILE_ID_" property="dirFileId" jdbcType="VARCHAR" />
         <result column="DEP_ID_" property="depId" jdbcType="VARCHAR" />
         <result column="FILE_NAME_" property="fileName" jdbcType="VARCHAR" />

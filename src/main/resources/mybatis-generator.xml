@@ -16,13 +16,13 @@
         </jdbcConnection>
 
         <!--实体类也不用提前，建立，会自动根据数据库生成，对应数据库中字段-->
-        <javaModelGenerator targetPackage="com.meng.demo" targetProject="src/main/java"/>
+        <javaModelGenerator targetPackage="com.meng.moudle.customer" targetProject="src/main/java"/>
 
         <!--映射的mapper.xml文件-->
         <sqlMapGenerator targetPackage="mybatis.mapper.demo" targetProject="src/main/resources"/>
 
         <!--映射文件，目标不必提前生成，会自动生成-->
-        <javaClientGenerator targetPackage="com.meng.demo"
+        <javaClientGenerator targetPackage="com.meng.moudle.customer"
                              targetProject="src/main/java" type="XMLMAPPER"/>
 
         <!--输入表名，表名不用对应实体，会自动判断-->
@@ -44,7 +44,7 @@
         <!--<property name="useActualColumnNames" value="false"/>-->
 
         <!--</table>-->
-        <table tableName="user" domainObjectName="User"
+        <table tableName="customer" domainObjectName="Customer"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
