@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.meng.user.mapper.UserMapper" >
+<mapper namespace="com.meng.moudle.user.mapper.UserMapper" >
 
     <resultMap id="BaseResultMap" type="com.meng.moudle.user.vo.User" >
         <id column="user_id" property="userId" jdbcType="VARCHAR" />
@@ -9,6 +9,7 @@
         <result column="age" property="age" jdbcType="INTEGER" />
         <result column="gender" property="gender" jdbcType="VARCHAR" />
         <result column="occupation" property="occupation" jdbcType="VARCHAR" />
+        <result column="phone" property="phone" jdbcType="VARCHAR" />
     </resultMap>
 
     <!-- 查询用户集合 -->
