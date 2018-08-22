@@ -9,7 +9,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 //@EnableScheduling//启动定时任务
 @EnableSwagger2             //启动swagger注解
-//@ComponentScan(basePackages = "com.meng")
+//@ComponentScan(basePackages = "com.meng")fcddsfed
 //@EnableAutoConfiguration
 public class MyApplication {
 

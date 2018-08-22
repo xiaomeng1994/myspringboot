@@ -9,11 +9,13 @@ public class Customer {
 
     private String gender;
 
-    private String investor;
-
     private Date birthday;
 
-    private Date order;
+    private String investor;
+
+    private String realation;
+
+    private Date orderDate;
 
     private Integer orderYears;
 
@@ -43,14 +45,6 @@ public class Customer {
         this.gender = gender;
     }
 
-    public String getInvestor() {
-        return investor;
-    }
-
-    public void setInvestor(String investor) {
-        this.investor = investor;
-    }
-
     public Date getBirthday() {
         return birthday;
     }
@@ -59,12 +53,28 @@ public class Customer {
         this.birthday = birthday;
     }
 
-    public Date getOrder() {
-        return order;
+    public String getInvestor() {
+        return investor;
     }
 
-    public void setOrder(Date order) {
-        this.order = order;
+    public void setInvestor(String investor) {
+        this.investor = investor;
+    }
+
+    public String getRealation() {
+        return realation;
+    }
+
+    public void setRealation(String realation) {
+        this.realation = realation;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 
     public Integer getOrderYears() {

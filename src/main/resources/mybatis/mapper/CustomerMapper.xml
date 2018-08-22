@@ -5,25 +5,24 @@
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
     <result column="investor" jdbcType="VARCHAR" property="investor" />
-    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
-    <result column="order" jdbcType="TIMESTAMP" property="order" />
+    <result column="realation" jdbcType="VARCHAR" property="realation" />
+    <result column="order_date" jdbcType="DATE" property="orderDate" />
     <result column="order_years" jdbcType="INTEGER" property="orderYears" />
     <result column="insurance_name" jdbcType="VARCHAR" property="insuranceName" />
   </resultMap>
-  <sql id="Base_Column_List">
-    id, name, gender, investor, birthday, order, order_years, insurance_name
-  </sql>
+
 
   <!-- 查询顾客集合 -->
-  <select id="getUserList" resultMap="BaseResultMap">
-    select  <include refid="Base_Column_List" /> from customer
+  <select id="getCustomerList" resultMap="BaseResultMap">
+    select  id, name, gender, birthday, investor, realation, order_date, order_years, insurance_name from customer
   </select>
 
   <!-- 根据顾客id查询 -->
   <select id="getCustomerById" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
-    <include refid="Base_Column_List" />
+      id, name, gender, birthday, investor, realation, order_date, order_years, insurance_name
     from customer
     where id = #{id,jdbcType=VARCHAR}
   </select>
@@ -47,11 +46,14 @@
       <if test="gender != null">
         gender,
       </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
       <if test="investor != null">
         investor,
       </if>
-      <if test="birthday != null">
-        birthday,
+      <if test="realation != null">
+        realation,
       </if>
       <if test="order != null">
         order,
@@ -73,14 +75,17 @@
       <if test="gender != null">
         #{gender,jdbcType=VARCHAR},
       </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
       <if test="investor != null">
         #{investor,jdbcType=VARCHAR},
       </if>
-      <if test="birthday != null">
-        #{birthday,jdbcType=TIMESTAMP},
+      <if test="realation != null">
+        #{realation,jdbcType=VARCHAR},
       </if>
       <if test="order != null">
-        #{order,jdbcType=TIMESTAMP},
+        #{order,jdbcType=DATE},
       </if>
       <if test="orderYears != null">
         #{orderYears,jdbcType=INTEGER},
@@ -100,14 +105,17 @@
       <if test="gender != null">
         gender = #{gender,jdbcType=VARCHAR},
       </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
       <if test="investor != null">
         investor = #{investor,jdbcType=VARCHAR},
       </if>
-      <if test="birthday != null">
-        birthday = #{birthday,jdbcType=TIMESTAMP},
+      <if test="realation != null">
+        realation = #{realation,jdbcType=VARCHAR},
       </if>
       <if test="order != null">
-        order = #{order,jdbcType=TIMESTAMP},
+        order = #{order,jdbcType=DATE},
       </if>
       <if test="orderYears != null">
         order_years = #{orderYears,jdbcType=INTEGER},

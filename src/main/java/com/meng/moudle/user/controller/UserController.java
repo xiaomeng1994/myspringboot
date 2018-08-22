@@ -5,9 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.meng.commnon.ReturnMessage;
 import com.meng.moudle.user.service.UserService;
 import com.meng.moudle.user.vo.User;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -51,6 +49,24 @@ public class UserController {
     public ReturnMessage deleteUserById(@PathVariable String userId) {
         userService.deleteUserById(userId);
         return new ReturnMessage("删除成功!");
+    }
+
+    @ApiOperation(value = "登录",notes = "根据用户名和密码登录")
+    /*@ApiImplicitParams({
+            @ApiImplicitParam(name = "userName", value = "用户名"),
+            @ApiImplicitParam(name = "password", value = "密码")
+    })*/
+    @RequestMapping(method = RequestMethod.POST,value = "/login")
+    public ReturnMessage login(@RequestParam(name = "userName") String userName,
+                               @RequestParam(name = "password") String password){
+        ReturnMessage returnMessage = new ReturnMessage();
+        System.out.println(userName + "," + password);
+        if("root".equals(userName) && "root".equals(password)){
+            returnMessage.setCode(200);
+        }else {
+            returnMessage.setCode(201);
+        }
+        return returnMessage;
     }
 
 }
